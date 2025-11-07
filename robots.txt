@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Main pages
+Allow: /index.html
+Allow: /travel-api.js
+
+# SEO-friendly URLs
+Allow: /flights
+Allow: /hotels
+Allow: /packages
+Allow: /deals
+
+# Static assets
+Allow: /assets/
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Block admin areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+
+# Sitemap location
+Sitemap: https://lastminute-travel.github.io/sitemap.xml
+
+# Crawl delay for polite crawling
+Crawl-delay: 1

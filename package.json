@@ -1,0 +1,51 @@
+{
+  "name": "lastminute-travel",
+  "version": "1.0.0",
+  "description": "🚀 LastMinute Travel - Spontaniczne podróże w super cenach! Znajdź najtańsze loty, hotele i pakiety wakacyjne.",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080",
+    "deploy": "gh-pages -d .",
+    "build": "echo 'Static site - no build needed'",
+    "test": "echo 'Tests will be added soon'"
+  },
+  "keywords": [
+    "travel",
+    "last-minute",
+    "flights",
+    "hotels",
+    "vacation",
+    "deals",
+    "spontaneous-travel",
+    "travel-search",
+    "booking",
+    "tourism"
+  ],
+  "author": {
+    "name": "LastMinute Travel Team",
+    "email": "team@lastminute-travel.com",
+    "url": "https://lastminute-travel.github.io"
+  },
+  "license": "MIT",
+  "homepage": "https://lastminute-travel.github.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peblo13/lastminute-travel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/peblo13/lastminute-travel/issues"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "gh-pages": "^6.0.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
