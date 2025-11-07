@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Przycisków Nawigacyjnych</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #1a1d3a;
+            color: white;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .nav-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.2), rgba(0, 255, 255, 0.2));
+            border: 2px solid transparent;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.4), rgba(0, 255, 255, 0.4));
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, #ff1493, #00ffff);
+            color: #000;
+        }
+        
+        .status {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Przycisków Nawigacyjnych</h1>
+    
+    <nav class="nav">
+        <a href="#flights" class="nav-btn active" data-type="flights">✈️ Loty</a>
+        <a href="#hotels" class="nav-btn" data-type="hotels">🏨 Hotele</a>
+        <a href="#packages" class="nav-btn" data-type="packages">📦 Pakiety</a>
+        <a href="#cars" class="nav-btn" data-type="cars">🚗 Wynajm Aut</a>
+    </nav>
+    
+    <div class="status">
+        <h3>Status:</h3>
+        <p id="status-text">Załadowano stronę. Kliknij przycisk powyżej.</p>
+        <p><strong>Aktywny typ:</strong> <span id="active-type">flights</span></p>
+    </div>
+    
+    <div class="status">
+        <h3>Logi:</h3>
+        <div id="logs"></div>
+    </div>
+
+    <script>
+        function log(message) {
+            const logs = document.getElementById('logs');
+            const time = new Date().toLocaleTimeString();
+            logs.innerHTML += `<div>[${time}] ${message}</div>`;
+            console.log(message);
+        }
+        
+        function initNavigation() {
+            log('🚀 Inicjalizacja nawigacji...');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            log(`📊 Znaleziono przycisków: ${navBtns.length}`);
+            
+            navBtns.forEach((btn, index) => {
+                log(`🔘 Przycisk ${index + 1}: ${btn.dataset.type} - "${btn.textContent.trim()}"`);
+                
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    log(`🖱️ Kliknięto przycisk: ${this.dataset.type}`);
+                    
+                    // Remove active from all
+                    navBtns.forEach(b => {
+                        b.classList.remove('active');
+                        log(`🔄 Usunięto 'active' z: ${b.dataset.type}`);
+                    });
+                    
+                    // Add active to clicked
+                    this.classList.add('active');
+                    log(`✅ Dodano 'active' do: ${this.dataset.type}`);
+                    
+                    // Update status
+                    document.getElementById('active-type').textContent = this.dataset.type;
+                    document.getElementById('status-text').textContent = `Wybrano: ${this.textContent.trim()}`;
+                });
+            });
+            
+            log('✅ Nawigacja zainicjalizowana pomyślnie');
+        }
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 DOM załadowany');
+            initNavigation();
+        });
+        
+        // Global test function
+        window.testClick = function(buttonIndex = 1) {
+            const buttons = document.querySelectorAll('.nav-btn');
+            if (buttons[buttonIndex]) {
+                log(`🧪 Symulowanie kliknięcia przycisku ${buttonIndex + 1}`);
+                buttons[buttonIndex].click();
+            } else {
+                log(`❌ Nie znaleziono przycisku o indeksie ${buttonIndex}`);
+            }
+        };
+    </script>
+</body>
+</html>
