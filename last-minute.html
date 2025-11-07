@@ -289,6 +289,196 @@
             box-shadow: var(--shadow-mega);
             position: relative;
             overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-tab.active, .search-tab:hover {
+            background: linear-gradient(45deg, #FF1493, #00FFFF);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.3);
+        }
+
+        .search-form {
+            display: none;
+        }
+
+        .search-form.active {
+            display: block;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00FFFF;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group select option {
+            background: #2c3e50;
+            color: white;
+        }
+
+        /* Passenger selector */
+        .passenger-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .passenger-type {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .passenger-type:last-child {
+            margin-bottom: 0;
+        }
+
+        .counter {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .counter button {
+            background: linear-gradient(45deg, #FF1493, #00FFFF);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .counter button:hover {
+            transform: scale(1.1);
+        }
+
+        .counter span {
+            color: white;
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Room selector */
+        .room-selector {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .room-config {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .room-config:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Simple counter */
+        .counter-simple {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .counter-simple button {
+            background: linear-gradient(45deg, #FF1493, #00FFFF);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .counter-simple button:hover {
+            transform: scale(1.1);
+        }
+
+        .counter-simple span {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 30px;
+            text-align: center;
         }
 
         .search-container::before {
@@ -993,6 +1183,616 @@
                 font-size: 1rem;
             }
         }
+
+        /* Modal styles */
+        .booking-modal, .details-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #ff4757;
+        }
+
+        .booking-content h2, .details-content h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .booking-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .booking-price {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #667eea;
+            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.1);
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-cancel, .btn-book, .btn-close, .btn-ok {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-cancel, .btn-close {
+            background: linear-gradient(45deg, #95a5a6, #bdc3c7);
+            color: white;
+        }
+
+        .btn-book, .btn-ok {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-cancel:hover, .btn-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(149,165,166,0.3);
+        }
+
+        .btn-book:hover, .btn-ok:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        }
+
+        .details-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .detail-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            color: #2c3e50;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .details-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .success-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-content {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .success-content h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .success-content p {
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+
+        /* Responsive modal styles */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .form-actions, .details-actions {
+                flex-direction: column;
+            }
+            
+            .success-content {
+                width: 95%;
+                padding: 30px 20px;
+            }
+        }
+
+        /* Enhanced flight results */
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .airline-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .airline-logo {
+            font-size: 24px;
+        }
+
+        .aircraft-info {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .flight-route {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .route-segment {
+            margin-bottom: 15px;
+        }
+
+        .route-segment:last-child {
+            margin-bottom: 0;
+        }
+
+        .route-segment.return {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 15px;
+        }
+
+        .flight-time {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .flight-arrow {
+            font-size: 20px;
+        }
+
+        .flight-details {
+            display: flex;
+            gap: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+
+        .baggage-info {
+            background: rgba(102,126,234,0.2);
+            border-radius: 10px;
+            padding: 12px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .baggage-info h4 {
+            margin: 0;
+            color: white;
+        }
+
+        .amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .amenity-tag {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .pricing-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .price-option {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .price-option.selected {
+            border-color: #00FFFF;
+            background: rgba(0,255,255,0.1);
+        }
+
+        .price-option:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .price-option span {
+            display: block;
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 5px;
+        }
+
+        .price-option strong {
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Hotel results */
+        .hotel-images {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .image-thumbnails img {
+            width: 60px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .image-thumbnails img:hover {
+            opacity: 1;
+        }
+
+        .hotel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .hotel-stars {
+            font-size: 16px;
+        }
+
+        .hotel-rating {
+            margin-bottom: 10px;
+        }
+
+        .rating-score {
+            background: linear-gradient(45deg, #4caf50, #66bb6a);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .rating-reviews {
+            color: rgba(255,255,255,0.7);
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .hotel-location {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+        }
+
+        .hotel-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .room-info {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px;
+            color: white;
+        }
+
+        /* Package results */
+        .package-images .main-image {
+            position: relative;
+        }
+
+        .package-duration {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,20,147,0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .package-type {
+            background: rgba(0,255,255,0.2);
+            color: #00FFFF;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .package-includes, .package-highlights {
+            margin-bottom: 15px;
+        }
+
+        .package-includes h4, .package-highlights h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .include-tag, .highlight-tag {
+            background: rgba(76,175,80,0.2);
+            color: #4caf50;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .highlight-tag {
+            background: rgba(255,193,7,0.2);
+            color: #ffc107;
+        }
+
+        /* Car results */
+        .car-image {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .car-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(102,126,234,0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .car-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .car-supplier {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .car-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .spec-item {
+            background: rgba(255,255,255,0.1);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .car-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .feature-tag {
+            background: rgba(103,58,183,0.2);
+            color: #673ab7;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .car-insurance {
+            background: rgba(76,175,80,0.2);
+            color: #4caf50;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .price-total {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .results-header h2 {
+            margin-bottom: 10px;
+        }
+
+        .results-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Enhanced card styles */
+        .deal-card.enhanced {
+            background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .deal-price-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+
+        .price-per-person {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -1026,50 +1826,269 @@
     <!-- Search Section -->
     <section class="search-section">
         <div class="search-container">
-            <div class="search-grid">
-                <div class="search-group">
-                    <label for="origin">🛫 Skąd</label>
-                    <select id="origin" class="search-select">
-                        <option value="WAW">Warsaw (WAW)</option>
-                        <option value="KRK">Kraków (KRK)</option>
-                        <option value="GDN">Gdańsk (GDN)</option>
-                        <option value="WRO">Wrocław (WRO)</option>
-                        <option value="POZ">Poznań (POZ)</option>
-                        <option value="KTW">Katowice (KTW)</option>
-                    </select>
-                </div>
-                
-                <div class="search-group">
-                    <label for="destination">🛬 Dokąd</label>
-                    <select id="destination" class="search-select">
-                        <option value="">Wybierz destynację</option>
-                        <option value="BER">Berlin (BER)</option>
-                        <option value="LON">Londyn (LON)</option>
-                        <option value="PAR">Paryż (PAR)</option>
-                        <option value="ROM">Rzym (ROM)</option>
-                        <option value="BCN">Barcelona (BCN)</option>
-                        <option value="AMS">Amsterdam (AMS)</option>
-                        <option value="VIE">Wiedeń (VIE)</option>
-                        <option value="PRG">Praga (PRG)</option>
-                        <option value="BUD">Budapeszt (BUD)</option>
-                        <option value="DUB">Dublin (DUB)</option>
-                    </select>
-                </div>
-                
-                <div class="search-group">
-                    <label for="departure">📅 Data wylotu</label>
-                    <input type="date" id="departure" class="search-input">
-                </div>
-                
-                <div class="search-group">
-                    <label for="return">📅 Data powrotu</label>
-                    <input type="date" id="return" class="search-input">
-                </div>
+            <div class="search-tabs">
+                <button class="search-tab active" data-tab="flights">✈️ Loty</button>
+                <button class="search-tab" data-tab="hotels">🏨 Hotele</button>
+                <button class="search-tab" data-tab="packages">🎒 Pakiety</button>
+                <button class="search-tab" data-tab="cars">🚗 Samochody</button>
             </div>
-            
-            <button class="search-btn" onclick="searchDeals()">
-                <i class="fas fa-search"></i> Znajdź Najlepsze Oferty
-            </button>
+
+            <!-- Flight Search Form -->
+            <div class="search-form active" id="flights-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>🛫 Skąd</label>
+                        <input type="text" placeholder="Warszawa (WAW)" value="Warszawa (WAW)">
+                    </div>
+                    <div class="form-group">
+                        <label>🛬 Dokąd</label>
+                        <input type="text" placeholder="Barcelona (BCN)" value="Barcelona (BCN)">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data wylotu</label>
+                        <input type="date" value="2025-12-15">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data powrotu</label>
+                        <input type="date" value="2025-12-22">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>👥 Pasażerowie</label>
+                        <div class="passenger-selector">
+                            <div class="passenger-type">
+                                <span>Dorośli (12+)</span>
+                                <div class="counter">
+                                    <button type="button" onclick="changePassengers('adults', -1)">-</button>
+                                    <span id="adults-count">2</span>
+                                    <button type="button" onclick="changePassengers('adults', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="passenger-type">
+                                <span>Dzieci (2-11)</span>
+                                <div class="counter">
+                                    <button type="button" onclick="changePassengers('children', -1)">-</button>
+                                    <span id="children-count">0</span>
+                                    <button type="button" onclick="changePassengers('children', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="passenger-type">
+                                <span>Niemowlęta (0-2)</span>
+                                <div class="counter">
+                                    <button type="button" onclick="changePassengers('infants', -1)">-</button>
+                                    <span id="infants-count">0</span>
+                                    <button type="button" onclick="changePassengers('infants', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>💼 Bagaż</label>
+                        <select id="baggage-option">
+                            <option value="hand">Tylko bagaż podręczny</option>
+                            <option value="checked" selected>Z bagażem rejestrowanym</option>
+                            <option value="both">Podręczny + 2x bagaż</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎫 Klasa</label>
+                        <select>
+                            <option value="economy" selected>Ekonomiczna</option>
+                            <option value="premium">Premium Economy</option>
+                            <option value="business">Biznes</option>
+                            <option value="first">Pierwsza</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn" onclick="searchFlights()">🔍 Wyszukaj loty</button>
+            </div>
+
+            <!-- Hotel Search Form -->
+            <div class="search-form" id="hotels-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>📍 Destynacja</label>
+                        <input type="text" placeholder="Barcelona, Hiszpania" value="Barcelona">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data przyjazdu</label>
+                        <input type="date" value="2025-12-15">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data wyjazdu</label>
+                        <input type="date" value="2025-12-22">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>🏠 Pokoje i goście</label>
+                        <div class="room-selector">
+                            <div class="room-config">
+                                <span>Pokoi: <strong id="rooms-count">1</strong></span>
+                                <div class="counter">
+                                    <button type="button" onclick="changeRooms(-1)">-</button>
+                                    <button type="button" onclick="changeRooms(1)">+</button>
+                                </div>
+                            </div>
+                            <div class="room-config">
+                                <span>Dorośli: <strong id="hotel-adults">2</strong></span>
+                                <div class="counter">
+                                    <button type="button" onclick="changeHotelGuests('adults', -1)">-</button>
+                                    <button type="button" onclick="changeHotelGuests('adults', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="room-config">
+                                <span>Dzieci: <strong id="hotel-children">0</strong></span>
+                                <div class="counter">
+                                    <button type="button" onclick="changeHotelGuests('children', -1)">-</button>
+                                    <button type="button" onclick="changeHotelGuests('children', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>⭐ Kategoria hotelu</label>
+                        <select>
+                            <option value="any">Dowolna</option>
+                            <option value="3">3 gwiazdki i więcej</option>
+                            <option value="4" selected>4 gwiazdki i więcej</option>
+                            <option value="5">5 gwiazdek</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🍽️ Wyżywienie</label>
+                        <select>
+                            <option value="any">Dowolne</option>
+                            <option value="bb">Śniadania</option>
+                            <option value="hb">Śniadania + obiad/kolacja</option>
+                            <option value="fb">Pełne wyżywienie</option>
+                            <option value="ai">All Inclusive</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn" onclick="searchHotels()">🔍 Wyszukaj hotele</button>
+            </div>
+
+            <!-- Package Search Form -->
+            <div class="search-form" id="packages-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>🌍 Destynacja</label>
+                        <select>
+                            <option value="spain">🇪🇸 Hiszpania</option>
+                            <option value="greece">🇬🇷 Grecja</option>
+                            <option value="italy">🇮🇹 Włochy</option>
+                            <option value="turkey">🇹🇷 Turcja</option>
+                            <option value="egypt">🇪🇬 Egipt</option>
+                            <option value="thailand">🇹🇭 Tajlandia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data wyjazdu</label>
+                        <input type="date" value="2025-12-15">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Długość pobytu</label>
+                        <select>
+                            <option value="7" selected>7 dni</option>
+                            <option value="10">10 dni</option>
+                            <option value="14">14 dni</option>
+                            <option value="21">21 dni</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>👥 Liczba osób</label>
+                        <div class="counter-simple">
+                            <button type="button" onclick="changePackageGuests(-1)">-</button>
+                            <span id="package-guests">2</span>
+                            <button type="button" onclick="changePackageGuests(1)">+</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>🎯 Typ pakietu</label>
+                        <select>
+                            <option value="beach">🏖️ Plaża i relaks</option>
+                            <option value="city">🏛️ City break</option>
+                            <option value="adventure">🏔️ Przygoda</option>
+                            <option value="culture">🎨 Kultura</option>
+                            <option value="family">👨‍👩‍👧‍👦 Rodzinny</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>💰 Budżet na osobę</label>
+                        <select>
+                            <option value="budget">Do 2000 zł</option>
+                            <option value="mid" selected>2000-4000 zł</option>
+                            <option value="luxury">Powyżej 4000 zł</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn" onclick="searchPackages()">🔍 Wyszukaj pakiety</button>
+            </div>
+
+            <!-- Car Search Form -->
+            <div class="search-form" id="cars-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>📍 Miejsce odbioru</label>
+                        <input type="text" placeholder="Barcelona Lotnisko" value="Barcelona Lotnisko">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data odbioru</label>
+                        <input type="date" value="2025-12-15">
+                    </div>
+                    <div class="form-group">
+                        <label>🕐 Godzina odbioru</label>
+                        <input type="time" value="10:00">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>📍 Miejsce zwrotu</label>
+                        <input type="text" placeholder="To samo miejsce" value="Barcelona Lotnisko">
+                    </div>
+                    <div class="form-group">
+                        <label>📅 Data zwrotu</label>
+                        <input type="date" value="2025-12-22">
+                    </div>
+                    <div class="form-group">
+                        <label>🕐 Godzina zwrotu</label>
+                        <input type="time" value="18:00">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>🚗 Typ pojazdu</label>
+                        <select>
+                            <option value="economy">🚗 Ekonomiczny</option>
+                            <option value="compact" selected>🚙 Kompaktowy</option>
+                            <option value="midsize">🚐 Średni</option>
+                            <option value="fullsize">🚌 Duży</option>
+                            <option value="luxury">🏎️ Luksusowy</option>
+                            <option value="suv">🚙 SUV</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>⚙️ Skrzynia biegów</label>
+                        <select>
+                            <option value="manual">Manualna</option>
+                            <option value="automatic" selected>Automatyczna</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🛡️ Ubezpieczenie</label>
+                        <select>
+                            <option value="basic">Podstawowe</option>
+                            <option value="full" selected>Pełne</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn" onclick="searchCars()">🔍 Wyszukaj samochody</button>
+            </div>
         </div>
     </section>
 
@@ -1114,6 +2133,117 @@
                 
                 particlesContainer.appendChild(particle);
             }
+        }
+
+        // Search form handling
+        function initSearchForms() {
+            // Tab switching
+            const tabs = document.querySelectorAll('.search-tab');
+            const forms = document.querySelectorAll('.search-form');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active from all tabs and forms
+                    tabs.forEach(t => t.classList.remove('active'));
+                    forms.forEach(f => f.classList.remove('active'));
+
+                    // Add active to clicked tab and corresponding form
+                    tab.classList.add('active');
+                    const targetForm = document.getElementById(tab.dataset.tab + '-form');
+                    if (targetForm) {
+                        targetForm.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        // Passenger counter functions
+        function changePassengers(type, delta) {
+            const countElement = document.getElementById(type + '-count');
+            let count = parseInt(countElement.textContent);
+            
+            if (type === 'adults') {
+                count = Math.max(1, count + delta);
+            } else {
+                count = Math.max(0, count + delta);
+            }
+            
+            countElement.textContent = count;
+        }
+
+        // Hotel guests counter
+        function changeHotelGuests(type, delta) {
+            const countElement = document.getElementById('hotel-' + type);
+            let count = parseInt(countElement.textContent);
+            
+            if (type === 'adults') {
+                count = Math.max(1, count + delta);
+            } else {
+                count = Math.max(0, count + delta);
+            }
+            
+            countElement.textContent = count;
+        }
+
+        // Rooms counter
+        function changeRooms(delta) {
+            const roomsElement = document.getElementById('rooms-count');
+            let rooms = parseInt(roomsElement.textContent);
+            rooms = Math.max(1, rooms + delta);
+            roomsElement.textContent = rooms;
+        }
+
+        // Package guests counter
+        function changePackageGuests(delta) {
+            const guestsElement = document.getElementById('package-guests');
+            let guests = parseInt(guestsElement.textContent);
+            guests = Math.max(1, guests + delta);
+            guestsElement.textContent = guests;
+        }
+
+        // Search functions
+        function searchFlights() {
+            console.log('🛫 Searching flights...');
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                generateFlightResults();
+            }, 2000);
+        }
+
+        function searchHotels() {
+            console.log('🏨 Searching hotels...');
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                generateHotelResults();
+            }, 2000);
+        }
+
+        function searchPackages() {
+            console.log('🎒 Searching packages...');
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                generatePackageResults();
+            }, 2000);
+        }
+
+        function searchCars() {
+            console.log('🚗 Searching cars...');
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                generateCarResults();
+            }, 2000);
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
         }
 
         // Navigation handling
@@ -1314,6 +2444,479 @@
             } finally {
                 document.getElementById('loading').classList.remove('active');
             }
+        }
+
+        // Generate flight results with detailed options
+        function generateFlightResults() {
+            const adults = parseInt(document.getElementById('adults-count').textContent);
+            const children = parseInt(document.getElementById('children-count').textContent);
+            const infants = parseInt(document.getElementById('infants-count').textContent);
+            const baggageOption = document.getElementById('baggage-option').value;
+            
+            const flights = [
+                {
+                    airline: "LOT Polish Airlines",
+                    logo: "🇵🇱",
+                    departure: "WAW 08:15",
+                    arrival: "BCN 11:30",
+                    returnDep: "BCN 16:45",
+                    returnArr: "WAW 20:00",
+                    duration: "3h 15m",
+                    stops: "Bezpośredni",
+                    aircraft: "Boeing 737-800",
+                    priceHand: "899 zł",
+                    priceChecked: "1299 zł",
+                    priceBoth: "1599 zł",
+                    amenities: ["WiFi", "Posiłek", "Rozrywka", "Miejsce standardowe"],
+                    baggage: {
+                        hand: "Bagaż podręczny 8kg",
+                        checked: "Bagaż rejestrowany 23kg",
+                        both: "Podręczny 8kg + 2x bagaż 23kg"
+                    }
+                },
+                {
+                    airline: "Ryanair",
+                    logo: "💛",
+                    departure: "WAW 06:00",
+                    arrival: "BCN 09:20",
+                    returnDep: "BCN 21:30",
+                    returnArr: "WAW 00:50+1",
+                    duration: "3h 20m",
+                    stops: "Bezpośredni",
+                    aircraft: "Boeing 737-800",
+                    priceHand: "299 zł",
+                    priceChecked: "599 zł",
+                    priceBoth: "899 zł",
+                    amenities: ["WiFi płatne", "Posiłek płatny", "Miejsce podstawowe"],
+                    baggage: {
+                        hand: "Mała torba 40x20x25cm",
+                        checked: "Bagaż rejestrowany 20kg",
+                        both: "Mała torba + bagaż 20kg + priority"
+                    }
+                },
+                {
+                    airline: "Lufthansa",
+                    logo: "🇩🇪",
+                    departure: "WAW 14:30",
+                    arrival: "BCN 17:45",
+                    returnDep: "BCN 12:15",
+                    returnArr: "WAW 15:30",
+                    duration: "3h 15m",
+                    stops: "Bezpośredni",
+                    aircraft: "Airbus A320",
+                    priceHand: "1199 zł",
+                    priceChecked: "1499 zł",
+                    priceBoth: "1799 zł",
+                    amenities: ["WiFi", "Posiłek premium", "Rozrywka", "Dodatkowa przestrzeń"],
+                    baggage: {
+                        hand: "Bagaż kabinowy 8kg",
+                        checked: "Bagaż rejestrowany 23kg",
+                        both: "Kabinowy 8kg + bagaż 23kg + wybór miejsca"
+                    }
+                }
+            ];
+
+            let html = `
+                <div class="results-header">
+                    <h2>✈️ Znalezione loty</h2>
+                    <p>Pasażerowie: ${adults} dorośli${children > 0 ? `, ${children} dzieci` : ''}${infants > 0 ? `, ${infants} niemowlęta` : ''}</p>
+                    <p>Opcja bagażu: ${getBaggageLabel(baggageOption)}</p>
+                </div>
+                <div class="deals-grid">
+            `;
+
+            flights.forEach(flight => {
+                const currentPrice = baggageOption === 'hand' ? flight.priceHand : 
+                                  baggageOption === 'checked' ? flight.priceChecked : flight.priceBoth;
+                const totalPassengers = adults + children;
+                const totalPrice = parseInt(currentPrice.replace(' zł', '')) * totalPassengers;
+
+                html += `
+                    <div class="deal-card flight enhanced">
+                        <div class="flight-header">
+                            <div class="airline-info">
+                                <span class="airline-logo">${flight.logo}</span>
+                                <strong>${flight.airline}</strong>
+                            </div>
+                            <div class="aircraft-info">
+                                <small>${flight.aircraft}</small>
+                            </div>
+                        </div>
+                        
+                        <div class="flight-route">
+                            <div class="route-segment">
+                                <div class="flight-time">
+                                    <strong>${flight.departure}</strong>
+                                    <div class="flight-arrow">✈️</div>
+                                    <strong>${flight.arrival}</strong>
+                                </div>
+                                <div class="flight-details">
+                                    <span>⏱️ ${flight.duration}</span>
+                                    <span>🛑 ${flight.stops}</span>
+                                </div>
+                            </div>
+                            <div class="route-segment return">
+                                <div class="flight-time">
+                                    <strong>${flight.returnDep}</strong>
+                                    <div class="flight-arrow">✈️</div>
+                                    <strong>${flight.returnArr}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="baggage-info">
+                            <h4>💼 ${flight.baggage[baggageOption]}</h4>
+                        </div>
+
+                        <div class="amenities">
+                            ${flight.amenities.map(amenity => `<span class="amenity-tag">${amenity}</span>`).join('')}
+                        </div>
+
+                        <div class="pricing-options">
+                            <div class="price-option ${baggageOption === 'hand' ? 'selected' : ''}" onclick="selectBaggage('hand', '${flight.priceHand}', ${totalPassengers})">
+                                <span>Tylko podręczny</span>
+                                <strong>${flight.priceHand}</strong>
+                            </div>
+                            <div class="price-option ${baggageOption === 'checked' ? 'selected' : ''}" onclick="selectBaggage('checked', '${flight.priceChecked}', ${totalPassengers})">
+                                <span>Z bagażem</span>
+                                <strong>${flight.priceChecked}</strong>
+                            </div>
+                            <div class="price-option ${baggageOption === 'both' ? 'selected' : ''}" onclick="selectBaggage('both', '${flight.priceBoth}', ${totalPassengers})">
+                                <span>Premium</span>
+                                <strong>${flight.priceBoth}</strong>
+                            </div>
+                        </div>
+
+                        <div class="deal-price-section">
+                            <div class="deal-price">${totalPrice.toLocaleString()} zł</div>
+                            <div class="price-per-person">za ${totalPassengers} ${totalPassengers === 1 ? 'osobę' : 'osoby'}</div>
+                        </div>
+
+                        <div class="deal-actions">
+                            <button class="deal-btn primary">✈️ Zarezerwuj lot</button>
+                            <button class="deal-btn secondary">💾 Zapisz</button>
+                            <button class="deal-btn info">ℹ️ Szczegóły</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            document.getElementById('results').innerHTML = html;
+            addButtonListeners();
+        }
+
+        function getBaggageLabel(option) {
+            const labels = {
+                'hand': 'Tylko bagaż podręczny',
+                'checked': 'Z bagażem rejestrowanym',
+                'both': 'Podręczny + 2x bagaż'
+            };
+            return labels[option] || option;
+        }
+
+        function selectBaggage(type, price, passengers) {
+            // Update UI to show selected option
+            const priceOptions = document.querySelectorAll('.price-option');
+            priceOptions.forEach(option => option.classList.remove('selected'));
+            event.target.classList.add('selected');
+            
+            // Update total price
+            const totalPrice = parseInt(price.replace(' zł', '')) * passengers;
+            const priceSection = event.target.closest('.deal-card').querySelector('.deal-price');
+            priceSection.textContent = totalPrice.toLocaleString() + ' zł';
+        }
+
+        // Generate hotel results with detailed info
+        function generateHotelResults() {
+            const hotels = [
+                {
+                    name: "Hotel Barcelona Center",
+                    stars: 4,
+                    rating: 4.5,
+                    reviews: 1247,
+                    location: "Las Ramblas, centrum Barcelony",
+                    images: [
+                        "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400",
+                        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400",
+                        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400"
+                    ],
+                    amenities: ["WiFi", "Klimatyzacja", "Śniadanie", "Parking", "Siłownia", "SPA"],
+                    price: "320 zł",
+                    pricePerNight: true,
+                    roomType: "Pokój dwuosobowy",
+                    distance: "0.2 km od centrum"
+                },
+                {
+                    name: "Catalonia Royal",
+                    stars: 5,
+                    rating: 4.8,
+                    reviews: 892,
+                    location: "Plac Katalonii",
+                    images: [
+                        "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400",
+                        "https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=400"
+                    ],
+                    amenities: ["WiFi", "Klimatyzacja", "Śniadanie", "Parking", "Spa luksusowe", "Basen", "Concierge"],
+                    price: "580 zł",
+                    pricePerNight: true,
+                    roomType: "Suite z widokiem",
+                    distance: "0.1 km od centrum"
+                }
+            ];
+
+            let html = `
+                <div class="results-header">
+                    <h2>🏨 Znalezione hotele</h2>
+                    <p>Barcelona, Hiszpania</p>
+                </div>
+                <div class="deals-grid">
+            `;
+
+            hotels.forEach(hotel => {
+                html += `
+                    <div class="deal-card hotel enhanced">
+                        <div class="hotel-images">
+                            <div class="main-image">
+                                <img src="${hotel.images[0]}" alt="${hotel.name}" onclick="showImageGallery([${hotel.images.map(img => `'${img}'`).join(',')}], 0)">
+                            </div>
+                            <div class="image-thumbnails">
+                                ${hotel.images.slice(1).map((img, index) => `
+                                    <img src="${img}" alt="${hotel.name}" onclick="showImageGallery([${hotel.images.map(img => `'${img}'`).join(',')}], ${index + 1})">
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="hotel-info">
+                            <div class="hotel-header">
+                                <h3>${hotel.name}</h3>
+                                <div class="hotel-stars">
+                                    ${'⭐'.repeat(hotel.stars)}
+                                </div>
+                            </div>
+                            
+                            <div class="hotel-rating">
+                                <span class="rating-score">${hotel.rating}/5</span>
+                                <span class="rating-reviews">(${hotel.reviews} opinii)</span>
+                            </div>
+                            
+                            <div class="hotel-location">
+                                📍 ${hotel.location}
+                                <br><small>${hotel.distance}</small>
+                            </div>
+                            
+                            <div class="hotel-amenities">
+                                ${hotel.amenities.map(amenity => `<span class="amenity-tag">${amenity}</span>`).join('')}
+                            </div>
+                            
+                            <div class="room-info">
+                                <strong>🏠 ${hotel.roomType}</strong>
+                            </div>
+                        </div>
+
+                        <div class="deal-price-section">
+                            <div class="deal-price">${hotel.price}</div>
+                            <div class="price-per-person">za noc</div>
+                        </div>
+
+                        <div class="deal-actions">
+                            <button class="deal-btn primary">🏨 Zarezerwuj hotel</button>
+                            <button class="deal-btn secondary">💾 Zapisz</button>
+                            <button class="deal-btn info">ℹ️ Szczegóły</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            document.getElementById('results').innerHTML = html;
+            addButtonListeners();
+            addImageGalleryListeners();
+        }
+
+        // Generate package results
+        function generatePackageResults() {
+            const packages = [
+                {
+                    name: "Barcelona City Break",
+                    destination: "Hiszpania",
+                    duration: "7 dni",
+                    images: [
+                        "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400",
+                        "https://images.unsplash.com/photo-1511527661048-7fe73d85e9a4?w=400"
+                    ],
+                    includes: ["Przelot", "Hotel 4*", "Śniadania", "Transfer", "Przewodnik"],
+                    highlights: ["Sagrada Familia", "Park Güell", "Las Ramblas", "Plaża Barceloneta"],
+                    price: "2499 zł",
+                    type: "City break"
+                },
+                {
+                    name: "Hiszpańska Riviera",
+                    destination: "Costa Brava",
+                    duration: "10 dni",
+                    images: [
+                        "https://images.unsplash.com/photo-1539650116574-75c0c6d97d6d?w=400",
+                        "https://images.unsplash.com/photo-1530841344095-c2e48a334c6c?w=400"
+                    ],
+                    includes: ["Przelot", "Hotel all inclusive", "Wszystkie posiłki", "Transfer", "Animacje"],
+                    highlights: ["Plaże Costa Brava", "Girona", "Figueres", "Aquapark"],
+                    price: "3799 zł",
+                    type: "Plaża i relaks"
+                }
+            ];
+
+            let html = `
+                <div class="results-header">
+                    <h2>🎒 Znalezione pakiety</h2>
+                    <p>Hiszpania - 7 dni</p>
+                </div>
+                <div class="deals-grid">
+            `;
+
+            packages.forEach(pkg => {
+                html += `
+                    <div class="deal-card package enhanced">
+                        <div class="package-images">
+                            <div class="main-image">
+                                <img src="${pkg.images[0]}" alt="${pkg.name}" onclick="showImageGallery([${pkg.images.map(img => `'${img}'`).join(',')}], 0)">
+                                <div class="package-duration">${pkg.duration}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="package-info">
+                            <div class="package-header">
+                                <h3>${pkg.name}</h3>
+                                <div class="package-type">${pkg.type}</div>
+                            </div>
+                            
+                            <div class="package-includes">
+                                <h4>✅ W cenie:</h4>
+                                ${pkg.includes.map(item => `<span class="include-tag">${item}</span>`).join('')}
+                            </div>
+                            
+                            <div class="package-highlights">
+                                <h4>🎯 Atrakcje:</h4>
+                                ${pkg.highlights.map(highlight => `<span class="highlight-tag">${highlight}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="deal-price-section">
+                            <div class="deal-price">${pkg.price}</div>
+                            <div class="price-per-person">za osobę</div>
+                        </div>
+
+                        <div class="deal-actions">
+                            <button class="deal-btn primary">🎒 Zarezerwuj pakiet</button>
+                            <button class="deal-btn secondary">💾 Zapisz</button>
+                            <button class="deal-btn info">ℹ️ Szczegóły</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            document.getElementById('results').innerHTML = html;
+            addButtonListeners();
+            addImageGalleryListeners();
+        }
+
+        // Generate car results
+        function generateCarResults() {
+            const cars = [
+                {
+                    model: "Volkswagen Golf",
+                    category: "Kompaktowy",
+                    image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=400",
+                    transmission: "Automatyczna",
+                    fuel: "Benzyna",
+                    passengers: 5,
+                    bags: 3,
+                    features: ["Klimatyzacja", "GPS", "Bluetooth", "USB"],
+                    price: "89 zł",
+                    priceTotal: "623 zł",
+                    insurance: "Pełne ubezpieczenie",
+                    supplier: "Europcar"
+                },
+                {
+                    model: "BMW 3 Series",
+                    category: "Luksusowy",
+                    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400",
+                    transmission: "Automatyczna",
+                    fuel: "Diesel",
+                    passengers: 5,
+                    bags: 4,
+                    features: ["Skórzane fotele", "GPS Premium", "Klimatyzacja 2-strefowa", "System audio"],
+                    price: "189 zł",
+                    priceTotal: "1323 zł",
+                    insurance: "Premium ubezpieczenie",
+                    supplier: "Hertz"
+                }
+            ];
+
+            let html = `
+                <div class="results-header">
+                    <h2>🚗 Znalezione samochody</h2>
+                    <p>Barcelona Lotnisko - 7 dni</p>
+                </div>
+                <div class="deals-grid">
+            `;
+
+            cars.forEach(car => {
+                html += `
+                    <div class="deal-card car enhanced">
+                        <div class="car-image">
+                            <img src="${car.image}" alt="${car.model}">
+                            <div class="car-category">${car.category}</div>
+                        </div>
+                        
+                        <div class="car-info">
+                            <div class="car-header">
+                                <h3>${car.model}</h3>
+                                <div class="car-supplier">${car.supplier}</div>
+                            </div>
+                            
+                            <div class="car-specs">
+                                <div class="spec-item">
+                                    <span>👥 ${car.passengers} osób</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>🧳 ${car.bags} walizki</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>⚙️ ${car.transmission}</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span>⛽ ${car.fuel}</span>
+                                </div>
+                            </div>
+                            
+                            <div class="car-features">
+                                ${car.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                            </div>
+                            
+                            <div class="car-insurance">
+                                🛡️ ${car.insurance}
+                            </div>
+                        </div>
+
+                        <div class="deal-price-section">
+                            <div class="deal-price">${car.price}</div>
+                            <div class="price-per-person">za dzień</div>
+                            <div class="price-total">Łącznie: ${car.priceTotal}</div>
+                        </div>
+
+                        <div class="deal-actions">
+                            <button class="deal-btn primary">🚗 Zarezerwuj auto</button>
+                            <button class="deal-btn secondary">💾 Zapisz</button>
+                            <button class="deal-btn info">ℹ️ Szczegóły</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            document.getElementById('results').innerHTML = html;
+            addButtonListeners();
         }
 
         // Generate mock results (replace with real API integration)
@@ -1760,6 +3363,9 @@
             
             // Add image gallery functionality
             addImageGalleryListeners();
+            
+            // Add button functionality
+            addButtonListeners();
         }
 
         // Image gallery functionality
@@ -1785,6 +3391,230 @@
                     showImageModal(this.src, this.alt);
                 });
             });
+        }
+
+        // Add button functionality
+        function addButtonListeners() {
+            // Primary booking buttons
+            document.querySelectorAll('.deal-btn.primary').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const dealCard = this.closest('.deal-card');
+                    const dealType = dealCard.classList.contains('flight') ? 'lot' : 
+                                   dealCard.classList.contains('hotel') ? 'hotel' : 
+                                   dealCard.classList.contains('package') ? 'pakiet' : 'samochód';
+                    const title = dealCard.querySelector('.deal-title').textContent.trim();
+                    const price = dealCard.querySelector('.deal-price').textContent.trim();
+                    
+                    showBookingModal(dealType, title, price, dealCard);
+                });
+            });
+            
+            // Save buttons
+            document.querySelectorAll('.deal-btn.secondary').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const dealCard = this.closest('.deal-card');
+                    const title = dealCard.querySelector('.deal-title').textContent.trim();
+                    
+                    // Add to saved deals
+                    saveToFavorites(dealCard);
+                    
+                    // Visual feedback
+                    this.innerHTML = '✅ Zapisano';
+                    this.style.background = 'linear-gradient(45deg, #4caf50, #66bb6a)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '💾 Zapisz';
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+            
+            // Details buttons
+            document.querySelectorAll('.deal-btn.info').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const dealCard = this.closest('.deal-card');
+                    showDetailsModal(dealCard);
+                });
+            });
+            
+            // Load more button
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    this.innerHTML = '⏳ Ładowanie...';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '✅ Załadowano więcej ofert';
+                        generateAdditionalOffers();
+                    }, 1500);
+                });
+            }
+        }
+
+        // Booking modal
+        function showBookingModal(type, title, price, dealCard) {
+            const modal = document.createElement('div');
+            modal.className = 'booking-modal';
+            modal.innerHTML = `
+                <div class="modal-backdrop" onclick="closeBookingModal()"></div>
+                <div class="modal-content booking-content">
+                    <span class="modal-close" onclick="closeBookingModal()">&times;</span>
+                    <h2>🎯 Rezerwacja ${type}</h2>
+                    <div class="booking-summary">
+                        <h3>${title}</h3>
+                        <div class="booking-price">${price}</div>
+                    </div>
+                    
+                    <form class="booking-form">
+                        <div class="form-group">
+                            <label>👤 Imię i nazwisko:</label>
+                            <input type="text" placeholder="Jan Kowalski" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📧 Email:</label>
+                            <input type="email" placeholder="jan@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>📱 Telefon:</label>
+                            <input type="tel" placeholder="+48 123 456 789" required>
+                        </div>
+                        <div class="form-group">
+                            <label>💳 Metoda płatności:</label>
+                            <select required>
+                                <option value="">Wybierz metodę płatności</option>
+                                <option value="card">💳 Karta płatnicza</option>
+                                <option value="blik">📱 BLIK</option>
+                                <option value="transfer">🏦 Przelew bankowy</option>
+                                <option value="paypal">🅿️ PayPal</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="closeBookingModal()" class="btn-cancel">Anuluj</button>
+                            <button type="submit" class="btn-book">💳 Zarezerwuj teraz</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Add booking form styles
+            addBookingStyles();
+            
+            // Form submission
+            modal.querySelector('.booking-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                processBooking(type, title, price);
+            });
+        }
+
+        // Details modal
+        function showDetailsModal(dealCard) {
+            const title = dealCard.querySelector('.deal-title').textContent.trim();
+            const details = Array.from(dealCard.querySelectorAll('.deal-detail')).map(detail => 
+                detail.textContent.trim()
+            );
+            
+            const modal = document.createElement('div');
+            modal.className = 'details-modal';
+            modal.innerHTML = `
+                <div class="modal-backdrop" onclick="closeDetailsModal()"></div>
+                <div class="modal-content details-content">
+                    <span class="modal-close" onclick="closeDetailsModal()">&times;</span>
+                    <h2>ℹ️ Szczegóły oferty</h2>
+                    <h3>${title}</h3>
+                    
+                    <div class="details-list">
+                        ${details.map(detail => `<div class="detail-item">• ${detail}</div>`).join('')}
+                    </div>
+                    
+                    <div class="details-actions">
+                        <button onclick="closeDetailsModal()" class="btn-close">Zamknij</button>
+                        <button onclick="closeDetailsModal(); showBookingModal('oferta', '${title}', 'Zapytaj o cenę', null)" class="btn-book">📞 Zapytaj o ofertę</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Save to favorites
+        function saveToFavorites(dealCard) {
+            const title = dealCard.querySelector('.deal-title').textContent.trim();
+            const price = dealCard.querySelector('.deal-price').textContent.trim();
+            
+            let favorites = JSON.parse(localStorage.getItem('travelFavorites') || '[]');
+            const favorite = {
+                id: Date.now(),
+                title: title,
+                price: price,
+                savedAt: new Date().toLocaleDateString('pl-PL')
+            };
+            
+            favorites.push(favorite);
+            localStorage.setItem('travelFavorites', JSON.stringify(favorites));
+            
+            console.log('💾 Zapisano do ulubionych:', title);
+        }
+
+        // Process booking
+        function processBooking(type, title, price) {
+            // Show loading
+            const submitBtn = document.querySelector('.btn-book');
+            submitBtn.innerHTML = '⏳ Przetwarzanie...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                closeBookingModal();
+                showSuccessMessage(type, title);
+            }, 2000);
+        }
+
+        // Success message
+        function showSuccessMessage(type, title) {
+            const message = document.createElement('div');
+            message.className = 'success-message';
+            message.innerHTML = `
+                <div class="success-content">
+                    <div class="success-icon">✅</div>
+                    <h3>Rezerwacja złożona pomyślnie!</h3>
+                    <p>Twoja rezerwacja ${type}: <strong>${title}</strong></p>
+                    <p>📧 Potwierdzenie zostało wysłane na email</p>
+                    <p>📱 SMS z detalami otrzymasz w ciągu 5 minut</p>
+                    <button onclick="closeSuccessMessage()" class="btn-ok">OK</button>
+                </div>
+            `;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                closeSuccessMessage();
+            }, 5000);
+        }
+
+        // Generate additional offers
+        function generateAdditionalOffers() {
+            // This would normally fetch more data from API
+            console.log('🔄 Generowanie dodatkowych ofert...');
+        }
+
+        // Close modals
+        function closeBookingModal() {
+            const modal = document.querySelector('.booking-modal');
+            if (modal) modal.remove();
+        }
+
+        function closeDetailsModal() {
+            const modal = document.querySelector('.details-modal');
+            if (modal) modal.remove();
+        }
+
+        function closeSuccessMessage() {
+            const message = document.querySelector('.success-message');
+            if (message) message.remove();
+        }
+
+        // Add booking styles function
+        function addBookingStyles() {
+            // Styles are already included in the main CSS
+            return true;
         }
 
         // Image modal for full-size viewing
@@ -1962,6 +3792,19 @@
             }
         }
         */
+
+        // Initialize everything when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 LastMinute Travel initialized!');
+            createParticles();
+            initSearchForms();
+            setCurrentDate();
+            
+            // Show welcome message
+            setTimeout(() => {
+                console.log('✈️ Ready to search for amazing travel deals!');
+            }, 1000);
+        });
     </script>
 </body>
 </html>
