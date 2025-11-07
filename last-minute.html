@@ -519,6 +519,166 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
+        /* Enhanced Results Styling */
+        .results-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .results-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .results-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .deal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .deal-main {
+            margin-bottom: 1.5rem;
+        }
+
+        .airline, .location, .duration, .category {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .flight-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .flight-number {
+            font-weight: 600;
+            color: var(--neon-cyan);
+        }
+
+        .time {
+            font-weight: 500;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .score {
+            background: var(--gradient-neon);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .reviews {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .deal-footer {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .deal-btn.primary {
+            flex: 2;
+            background: var(--gradient-cosmic);
+        }
+
+        .deal-btn.secondary {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .deal-btn.secondary:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--neon-cyan);
+        }
+
+        .results-footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 20, 147, 0.2);
+        }
+
+        .results-footer p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .load-more-btn {
+            padding: 1rem 3rem;
+            background: linear-gradient(45deg, rgba(255, 20, 147, 0.2), rgba(0, 255, 255, 0.2));
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 25px;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: linear-gradient(45deg, rgba(255, 20, 147, 0.3), rgba(0, 255, 255, 0.3));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Card Type Specific Styling */
+        .deal-card.flight {
+            border-left: 4px solid #4fc3f7;
+        }
+
+        .deal-card.hotel {
+            border-left: 4px solid #66bb6a;
+        }
+
+        .deal-card.package {
+            border-left: 4px solid #ff7043;
+        }
+
+        .deal-card.car {
+            border-left: 4px solid #ab47bc;
+        }
+
         /* Loading Animation */
         .loading {
             display: none;
@@ -906,52 +1066,286 @@
         function generateMockResults(origin, destination, departure, returnDate) {
             const results = document.getElementById('results');
             
-            const mockDeals = [
-                {
-                    type: 'flight',
-                    title: `${origin} → ${destination}`,
-                    price: '299 zł',
-                    badge: 'Hot Deal',
-                    details: [
-                        { icon: 'plane', text: 'Lot bezpośredni' },
-                        { icon: 'clock', text: '2h 15min' },
-                        { icon: 'calendar', text: departure },
-                        { icon: 'users', text: 'Dla 1 osoby' }
-                    ]
-                },
-                {
-                    type: 'hotel',
-                    title: 'Hotel Premium',
-                    price: '159 zł/noc',
-                    badge: 'Last Minute',
-                    details: [
-                        { icon: 'star', text: '4★ Hotel' },
-                        { icon: 'map-marker', text: 'Centrum miasta' },
-                        { icon: 'wifi', text: 'WiFi gratis' },
-                        { icon: 'coffee', text: 'Śniadanie wliczone' }
-                    ]
-                },
-                {
-                    type: 'package',
-                    title: 'Lot + Hotel',
-                    price: '899 zł',
-                    badge: 'Bestseller',
-                    details: [
-                        { icon: 'suitcase', text: 'Kompletny pakiet' },
-                        { icon: 'plane', text: 'Loty w obie strony' },
-                        { icon: 'bed', text: '3 noce w hotelu' },
-                        { icon: 'shield', text: 'Ubezpieczenie' }
-                    ]
-                }
-            ];
+            const searchType = window.currentSearchType || 'flights';
+            let mockDeals = [];
+            
+            if (searchType === 'flights') {
+                mockDeals = [
+                    {
+                        type: 'flight',
+                        airline: 'LOT Polish Airlines',
+                        title: `${origin || 'Warszawa'} → ${destination}`,
+                        price: '289 zł',
+                        originalPrice: '459 zł',
+                        badge: 'Hot Deal -37%',
+                        flightNumber: 'LO 325',
+                        departure: '08:15',
+                        arrival: '11:30',
+                        duration: '3h 15min',
+                        stops: 'Bezpośredni',
+                        details: [
+                            { icon: 'plane', text: 'Lot bezpośredni' },
+                            { icon: 'clock', text: '3h 15min' },
+                            { icon: 'calendar', text: departure },
+                            { icon: 'suitcase', text: 'Bagaż podręczny gratis' },
+                            { icon: 'wifi', text: 'WiFi w samolocie' },
+                            { icon: 'coffee', text: 'Posiłek w cenie' }
+                        ]
+                    },
+                    {
+                        type: 'flight',
+                        airline: 'Ryanair',
+                        title: `${origin || 'Kraków'} → ${destination}`,
+                        price: '159 zł',
+                        originalPrice: '229 zł',
+                        badge: 'Last Minute -31%',
+                        flightNumber: 'FR 8934',
+                        departure: '14:20',
+                        arrival: '17:45',
+                        duration: '3h 25min',
+                        stops: 'Bezpośredni',
+                        details: [
+                            { icon: 'plane', text: 'Lot bezpośredni' },
+                            { icon: 'clock', text: '3h 25min' },
+                            { icon: 'calendar', text: departure },
+                            { icon: 'tags', text: 'Najniższa cena' },
+                            { icon: 'check', text: 'Punktualne odloty' },
+                            { icon: 'shopping-bag', text: 'Zakupy duty-free' }
+                        ]
+                    },
+                    {
+                        type: 'flight',
+                        airline: 'Wizz Air',
+                        title: `${origin || 'Gdańsk'} → ${destination}`,
+                        price: '319 zł',
+                        originalPrice: '449 zł',
+                        badge: 'Bestseller -29%',
+                        flightNumber: 'W6 1234',
+                        departure: '19:45',
+                        arrival: '23:10',
+                        duration: '3h 25min',
+                        stops: 'Bezpośredni',
+                        details: [
+                            { icon: 'plane', text: 'Nowoczesny samolot' },
+                            { icon: 'clock', text: '3h 25min' },
+                            { icon: 'calendar', text: departure },
+                            { icon: 'seat', text: 'Wybór miejsca gratis' },
+                            { icon: 'mobile', text: 'Check-in online' },
+                            { icon: 'shield', text: 'Ubezpieczenie' }
+                        ]
+                    }
+                ];
+            } else if (searchType === 'hotels') {
+                mockDeals = [
+                    {
+                        type: 'hotel',
+                        title: 'Hotel Luxus Palace ★★★★★',
+                        location: `${destination} - Centrum`,
+                        price: '199 zł/noc',
+                        originalPrice: '349 zł/noc',
+                        badge: 'Exclusive -43%',
+                        rating: '9.2',
+                        reviews: '1,247',
+                        amenities: ['WiFi', 'Spa', 'Basen', 'Parking'],
+                        details: [
+                            { icon: 'star', text: '5★ Luksusowy hotel' },
+                            { icon: 'map-marker', text: 'Centrum miasta' },
+                            { icon: 'wifi', text: 'WiFi gratis' },
+                            { icon: 'coffee', text: 'Śniadanie bufet' },
+                            { icon: 'swimming-pool', text: 'Basen & SPA' },
+                            { icon: 'car', text: 'Parking gratis' }
+                        ]
+                    },
+                    {
+                        type: 'hotel',
+                        title: 'Boutique Design Hotel ★★★★',
+                        location: `${destination} - Stare Miasto`,
+                        price: '129 zł/noc',
+                        originalPrice: '189 zł/noc',
+                        badge: 'Top Rated -32%',
+                        rating: '8.8',
+                        reviews: '892',
+                        amenities: ['WiFi', 'Restauracja', 'Bar', 'Concierge'],
+                        details: [
+                            { icon: 'star', text: '4★ Butikowy hotel' },
+                            { icon: 'map-marker', text: 'Stare Miasto' },
+                            { icon: 'wifi', text: 'WiFi super szybkie' },
+                            { icon: 'utensils', text: 'Restauracja gourmet' },
+                            { icon: 'glass-martini', text: 'Rooftop bar' },
+                            { icon: 'concierge-bell', text: 'Concierge 24/7' }
+                        ]
+                    },
+                    {
+                        type: 'hotel',
+                        title: 'Modern City Hotel ★★★',
+                        location: `${destination} - Dzielnica biznesowa`,
+                        price: '89 zł/noc',
+                        originalPrice: '129 zł/noc',
+                        badge: 'Budget Choice -31%',
+                        rating: '8.1',
+                        reviews: '1,567',
+                        amenities: ['WiFi', 'Fitness', 'Business Center'],
+                        details: [
+                            { icon: 'star', text: '3★ Nowoczesny hotel' },
+                            { icon: 'map-marker', text: 'Centrum biznesowe' },
+                            { icon: 'wifi', text: 'WiFi w całym hotelu' },
+                            { icon: 'dumbbell', text: 'Centrum fitness' },
+                            { icon: 'briefcase', text: 'Sale konferencyjne' },
+                            { icon: 'metro', text: 'Blisko metro' }
+                        ]
+                    }
+                ];
+            } else if (searchType === 'packages') {
+                mockDeals = [
+                    {
+                        type: 'package',
+                        title: `Kompletny pakiet ${destination}`,
+                        duration: '5 dni / 4 noce',
+                        price: '1,299 zł',
+                        originalPrice: '1,899 zł',
+                        badge: 'All Inclusive -32%',
+                        includes: ['Loty', 'Hotel 4★', 'Transfery', 'Ubezpieczenie'],
+                        details: [
+                            { icon: 'suitcase', text: 'Pakiet All-in-One' },
+                            { icon: 'plane', text: 'Loty w obie strony' },
+                            { icon: 'bed', text: 'Hotel 4★ ze śniadaniem' },
+                            { icon: 'bus', text: 'Transfery lotnisko-hotel' },
+                            { icon: 'shield', text: 'Ubezpieczenie turystyczne' },
+                            { icon: 'headset', text: 'Wsparcie 24/7' }
+                        ]
+                    },
+                    {
+                        type: 'package',
+                        title: `Weekend w ${destination}`,
+                        duration: '3 dni / 2 noce',
+                        price: '749 zł',
+                        originalPrice: '999 zł',
+                        badge: 'City Break -25%',
+                        includes: ['Loty', 'Hotel 3★', 'Przewodnik', 'Mapa'],
+                        details: [
+                            { icon: 'city', text: 'City Break pakiet' },
+                            { icon: 'plane', text: 'Loty bezpośrednie' },
+                            { icon: 'bed', text: 'Hotel w centrum' },
+                            { icon: 'map', text: 'Przewodnik po mieście' },
+                            { icon: 'camera', text: 'Foto spots' },
+                            { icon: 'utensils', text: 'Rekomendacje restauracji' }
+                        ]
+                    },
+                    {
+                        type: 'package',
+                        title: `Luksusowy pobyt ${destination}`,
+                        duration: '7 dni / 6 nocy',
+                        price: '2,499 zł',
+                        originalPrice: '3,499 zł',
+                        badge: 'Premium -29%',
+                        includes: ['Loty Business', 'Hotel 5★', 'Spa', 'Excursions'],
+                        details: [
+                            { icon: 'crown', text: 'Pakiet Premium' },
+                            { icon: 'plane', text: 'Loty klasa Business' },
+                            { icon: 'hotel', text: 'Hotel 5★ z widokiem' },
+                            { icon: 'spa', text: 'Spa & wellness' },
+                            { icon: 'route', text: 'Wycieczki fakultatywne' },
+                            { icon: 'wine-glass', text: 'Kolacja degustacyjna' }
+                        ]
+                    }
+                ];
+            } else if (searchType === 'cars') {
+                mockDeals = [
+                    {
+                        type: 'car',
+                        title: 'Toyota Corolla lub podobny',
+                        category: 'Klasa ekonomiczna',
+                        price: '89 zł/dzień',
+                        originalPrice: '129 zł/dzień',
+                        badge: 'Eco Choice -31%',
+                        company: 'Hertz',
+                        specs: ['5 miejsc', 'Automatyczna', 'Klimatyzacja'],
+                        details: [
+                            { icon: 'car', text: 'Toyota Corolla' },
+                            { icon: 'users', text: '5 miejsc' },
+                            { icon: 'cog', text: 'Skrzynia automatyczna' },
+                            { icon: 'snowflake', text: 'Klimatyzacja' },
+                            { icon: 'gas-pump', text: 'Ekonomiczne spalanie' },
+                            { icon: 'shield', text: 'Pełne ubezpieczenie' }
+                        ]
+                    },
+                    {
+                        type: 'car',
+                        title: 'BMW X3 lub podobny',
+                        category: 'Klasa premium SUV',
+                        price: '199 zł/dzień',
+                        originalPrice: '289 zł/dzień',
+                        badge: 'Premium -31%',
+                        company: 'Avis',
+                        specs: ['5 miejsc', 'AWD', 'GPS', 'Skóra'],
+                        details: [
+                            { icon: 'car-side', text: 'BMW X3 SUV' },
+                            { icon: 'users', text: '5 miejsc skórzanych' },
+                            { icon: 'road', text: 'Napęd AWD' },
+                            { icon: 'map', text: 'GPS navigation' },
+                            { icon: 'music', text: 'System audio premium' },
+                            { icon: 'key', text: 'Bezkluczykowy start' }
+                        ]
+                    },
+                    {
+                        type: 'car',
+                        title: 'Mercedes C-Class lub podobny',
+                        category: 'Klasa luksusowa',
+                        price: '249 zł/dzień',
+                        originalPrice: '349 zł/dzień',
+                        badge: 'Luxury -29%',
+                        company: 'Europcar',
+                        specs: ['5 miejsc', 'Automatic', 'Premium'],
+                        details: [
+                            { icon: 'car', text: 'Mercedes C-Class' },
+                            { icon: 'gem', text: 'Klasa luksusowa' },
+                            { icon: 'cog', text: 'Automat premium' },
+                            { icon: 'seat', text: 'Fotele z pamięcią' },
+                            { icon: 'satellite', text: 'Asystent parkowania' },
+                            { icon: 'shield-alt', text: 'Ubezpieczenie premium' }
+                        ]
+                    }
+                ];
+            }
             
             const resultsHTML = `
+                <div class="results-header">
+                    <h2>🎯 Znalezione oferty (${mockDeals.length})</h2>
+                    <p>Najlepsze ${searchType === 'flights' ? 'loty' : searchType === 'hotels' ? 'hotele' : searchType === 'packages' ? 'pakiety' : 'samochody'} dla Twojej podróży</p>
+                </div>
                 <div class="results-grid">
                     ${mockDeals.map(deal => `
-                        <div class="deal-card">
-                            <div class="deal-badge">${deal.badge}</div>
-                            <h3 class="deal-title">${deal.title}</h3>
-                            <div class="deal-price">${deal.price}</div>
+                        <div class="deal-card ${deal.type}">
+                            <div class="deal-header">
+                                <div class="deal-badge">${deal.badge}</div>
+                                ${deal.originalPrice ? `<div class="original-price">${deal.originalPrice}</div>` : ''}
+                            </div>
+                            
+                            <div class="deal-main">
+                                <h3 class="deal-title">${deal.title}</h3>
+                                ${deal.airline ? `<div class="airline">${deal.airline}</div>` : ''}
+                                ${deal.location ? `<div class="location">${deal.location}</div>` : ''}
+                                ${deal.duration ? `<div class="duration">${deal.duration}</div>` : ''}
+                                ${deal.category ? `<div class="category">${deal.category}</div>` : ''}
+                                
+                                ${deal.flightNumber ? `
+                                    <div class="flight-info">
+                                        <span class="flight-number">${deal.flightNumber}</span>
+                                        <span class="time">${deal.departure} → ${deal.arrival}</span>
+                                        <span class="duration">${deal.duration}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${deal.rating ? `
+                                    <div class="rating">
+                                        <span class="score">${deal.rating}/10</span>
+                                        <span class="reviews">(${deal.reviews} opinii)</span>
+                                    </div>
+                                ` : ''}
+                                
+                                <div class="deal-price">${deal.price}</div>
+                            </div>
+                            
                             <div class="deal-details">
                                 ${deal.details.map(detail => `
                                     <div class="deal-detail">
@@ -960,9 +1354,23 @@
                                     </div>
                                 `).join('')}
                             </div>
-                            <button class="deal-btn">Rezerwuj Teraz</button>
+                            
+                            <div class="deal-footer">
+                                <button class="deal-btn primary">
+                                    ${deal.type === 'flight' ? '🛫 Zarezerwuj lot' : 
+                                      deal.type === 'hotel' ? '🏨 Zarezerwuj hotel' : 
+                                      deal.type === 'package' ? '📦 Zarezerwuj pakiet' : 
+                                      '🚗 Wynajmij auto'}
+                                </button>
+                                <button class="deal-btn secondary">💾 Zapisz</button>
+                            </div>
                         </div>
                     `).join('')}
+                </div>
+                
+                <div class="results-footer">
+                    <p>💡 <strong>Wskazówka:</strong> Ceny mogą się zmieniać. Zarezerwuj teraz, aby zabezpieczyć najlepszą ofertę!</p>
+                    <button class="load-more-btn">Pokaż więcej ofert</button>
                 </div>
             `;
             
