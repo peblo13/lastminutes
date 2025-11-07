@@ -848,6 +848,91 @@
             margin-top: 0.3rem;
         }
 
+        /* Image Gallery Styles */
+        .deal-image-section {
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-image {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .deal-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .deal-main-img:hover {
+            transform: scale(1.05);
+        }
+
+        .image-count {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .image-gallery {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            justify-content: center;
+        }
+
+        .gallery-thumb {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .gallery-thumb:hover {
+            border-color: var(--neon-cyan);
+            transform: scale(1.1);
+        }
+
+        .company-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0.3rem 0;
+            opacity: 0.8;
+        }
+
+        /* Mobile optimizations for images */
+        @media (max-width: 768px) {
+            .main-image {
+                height: 200px;
+            }
+            
+            .gallery-thumb {
+                width: 60px;
+                height: 45px;
+            }
+            
+            .image-gallery {
+                gap: 0.3rem;
+            }
+        }
+
         /* Loading Animation */
         .loading {
             display: none;
@@ -1315,6 +1400,12 @@
                         badge: 'Exclusive -43%',
                         rating: '9.2',
                         reviews: '1,247',
+                        image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&h=200&fit=crop&auto=format'
+                        ],
                         amenities: ['WiFi', 'Spa', 'Basen', 'Parking'],
                         details: [
                             { icon: 'star', text: '5★ Luksusowy hotel' },
@@ -1334,6 +1425,12 @@
                         badge: 'Top Rated -32%',
                         rating: '8.8',
                         reviews: '892',
+                        image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&h=200&fit=crop&auto=format'
+                        ],
                         amenities: ['WiFi', 'Restauracja', 'Bar', 'Concierge'],
                         details: [
                             { icon: 'star', text: '4★ Butikowy hotel' },
@@ -1353,6 +1450,12 @@
                         badge: 'Budget Choice -31%',
                         rating: '8.1',
                         reviews: '1,567',
+                        image: 'https://images.unsplash.com/photo-1590447158019-883d8d5f8bc7?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1590447158019-883d8d5f8bc7?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1596436889106-be35e843f974?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&h=200&fit=crop&auto=format'
+                        ],
                         amenities: ['WiFi', 'Fitness', 'Business Center'],
                         details: [
                             { icon: 'star', text: '3★ Nowoczesny hotel' },
@@ -1373,6 +1476,12 @@
                         price: '1,299 zł',
                         originalPrice: '1,899 zł',
                         badge: 'All Inclusive -32%',
+                        image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=300&h=200&fit=crop&auto=format'
+                        ],
                         includes: ['Loty', 'Hotel 4★', 'Transfery', 'Ubezpieczenie'],
                         details: [
                             { icon: 'suitcase', text: 'Pakiet All-in-One' },
@@ -1390,6 +1499,12 @@
                         price: '749 zł',
                         originalPrice: '999 zł',
                         badge: 'City Break -25%',
+                        image: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop&auto=format'
+                        ],
                         includes: ['Loty', 'Hotel 3★', 'Przewodnik', 'Mapa'],
                         details: [
                             { icon: 'city', text: 'City Break pakiet' },
@@ -1407,6 +1522,12 @@
                         price: '2,499 zł',
                         originalPrice: '3,499 zł',
                         badge: 'Premium -29%',
+                        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=300&h=200&fit=crop&auto=format'
+                        ],
                         includes: ['Loty Business', 'Hotel 5★', 'Spa', 'Excursions'],
                         details: [
                             { icon: 'crown', text: 'Pakiet Premium' },
@@ -1428,6 +1549,12 @@
                         originalPrice: '129 zł/dzień',
                         badge: 'Eco Choice -31%',
                         company: 'Hertz',
+                        image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=300&h=200&fit=crop&auto=format'
+                        ],
                         specs: ['5 miejsc', 'Automatyczna', 'Klimatyzacja'],
                         details: [
                             { icon: 'car', text: 'Toyota Corolla' },
@@ -1446,6 +1573,12 @@
                         originalPrice: '289 zł/dzień',
                         badge: 'Premium -31%',
                         company: 'Avis',
+                        image: 'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1563720223809-1149ad3f37b2?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop&auto=format'
+                        ],
                         specs: ['5 miejsc', 'AWD', 'GPS', 'Skóra'],
                         details: [
                             { icon: 'car-side', text: 'BMW X3 SUV' },
@@ -1464,6 +1597,12 @@
                         originalPrice: '349 zł/dzień',
                         badge: 'Luxury -29%',
                         company: 'Europcar',
+                        image: 'https://images.unsplash.com/photo-1563720223809-1149ad3f37b2?w=400&h=250&fit=crop&auto=format',
+                        gallery: [
+                            'https://images.unsplash.com/photo-1563720223809-1149ad3f37b2?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop&auto=format',
+                            'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=300&h=250&fit=crop&auto=format'
+                        ],
                         specs: ['5 miejsc', 'Automatic', 'Premium'],
                         details: [
                             { icon: 'car', text: 'Mercedes C-Class' },
@@ -1490,6 +1629,22 @@
                                 ${deal.originalPrice ? `<div class="original-price">${deal.originalPrice}</div>` : ''}
                             </div>
                             
+                            ${deal.image ? `
+                                <div class="deal-image-section">
+                                    <div class="main-image">
+                                        <img src="${deal.image}" alt="${deal.title}" class="deal-main-img" />
+                                        ${deal.gallery ? `<div class="image-count">📷 ${deal.gallery.length + 1}</div>` : ''}
+                                    </div>
+                                    ${deal.gallery ? `
+                                        <div class="image-gallery">
+                                            ${deal.gallery.slice(0, 3).map((img, index) => `
+                                                <img src="${img}" alt="${deal.title} ${index + 1}" class="gallery-thumb" />
+                                            `).join('')}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
                             <div class="deal-main">
                                 <h3 class="deal-title">
                                     ${deal.airline ? `<span class="airline-info">${deal.airline}</span><br>` : ''}
@@ -1499,6 +1654,7 @@
                                 ${deal.location ? `<div class="location-info">📍 ${deal.location}</div>` : ''}
                                 ${deal.duration ? `<div class="duration-info">⏱️ ${deal.duration}</div>` : ''}
                                 ${deal.category ? `<div class="category-info">🚗 ${deal.category}</div>` : ''}
+                                ${deal.company ? `<div class="company-info">🏢 ${deal.company}</div>` : ''}
                                 
                                 ${deal.flightNumber ? `
                                     <div class="flight-info">
@@ -1601,6 +1757,115 @@
             `;
             
             results.innerHTML = resultsHTML;
+            
+            // Add image gallery functionality
+            addImageGalleryListeners();
+        }
+
+        // Image gallery functionality
+        function addImageGalleryListeners() {
+            document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const mainImg = this.closest('.deal-image-section').querySelector('.deal-main-img');
+                    const temp = mainImg.src;
+                    mainImg.src = this.src;
+                    this.src = temp;
+                    
+                    // Add animation effect
+                    mainImg.style.opacity = '0.5';
+                    setTimeout(() => {
+                        mainImg.style.opacity = '1';
+                    }, 200);
+                });
+            });
+            
+            // Add click to enlarge main image
+            document.querySelectorAll('.deal-main-img').forEach(img => {
+                img.addEventListener('click', function() {
+                    showImageModal(this.src, this.alt);
+                });
+            });
+        }
+
+        // Image modal for full-size viewing
+        function showImageModal(src, alt) {
+            const modal = document.createElement('div');
+            modal.className = 'image-modal';
+            modal.innerHTML = `
+                <div class="modal-backdrop" onclick="closeImageModal()"></div>
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeImageModal()">&times;</span>
+                    <img src="${src}" alt="${alt}" class="modal-image" />
+                    <div class="modal-caption">${alt}</div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            // Add modal styles if not already added
+            if (!document.querySelector('#modal-styles')) {
+                const style = document.createElement('style');
+                style.id = 'modal-styles';
+                style.textContent = `
+                    .image-modal {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 10000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    
+                    .modal-backdrop {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.9);
+                    }
+                    
+                    .modal-content {
+                        position: relative;
+                        max-width: 90%;
+                        max-height: 90%;
+                        text-align: center;
+                    }
+                    
+                    .modal-close {
+                        position: absolute;
+                        top: -40px;
+                        right: 0;
+                        color: white;
+                        font-size: 2rem;
+                        cursor: pointer;
+                        z-index: 10001;
+                    }
+                    
+                    .modal-image {
+                        max-width: 100%;
+                        max-height: 80vh;
+                        border-radius: 10px;
+                        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                    }
+                    
+                    .modal-caption {
+                        color: white;
+                        margin-top: 1rem;
+                        font-size: 1.1rem;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function closeImageModal() {
+            const modal = document.querySelector('.image-modal');
+            if (modal) {
+                modal.remove();
+            }
         }
 
         // Initialize everything
